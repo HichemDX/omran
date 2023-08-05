@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "531276732832",
+    "project_id": "omran-3473d",
+    "storage_bucket": "omran-3473d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531276732832:android:1dacf090fca7648bffecc5",
+        "android_client_info": {
+          "package_name": "com.omran.dz.khotwa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531276732832-lmtlvmte59u2pe90hhi2jis13t4hsrc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.omran.dz.khotwa",
+            "certificate_hash": "b9955099194eff3b3e07fa5b59bcbc0235f079d9"
+          }
+        },
+        {
+          "client_id": "531276732832-3mqgtqickkjqpereku96a6nrtclnf5j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClvgdzKd5w3gjWMayROGo8SlN-BhnB-iY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531276732832-3mqgtqickkjqpereku96a6nrtclnf5j0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
