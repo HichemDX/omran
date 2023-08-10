@@ -11,7 +11,7 @@ class CommandDetailModel {
   double? grandTotal;
   String? status;
   String? createdAt;
-  User? customer;
+  CustomUser? customer;
   ShippingInfo? shippingInfo;
   List<Product>? listProducts;
 
@@ -38,7 +38,7 @@ class CommandDetailModel {
     status = json['status'];
     createdAt = json['created_at'];
     customer = json['customer'] != null
-        ? new User.fromJson(json['customer'])
+        ? new CustomUser.fromJson(json['customer'])
         : null;
     shippingInfo = json['shipping_info'] != null
         ? new ShippingInfo.fromJson(json['shipping_info'])

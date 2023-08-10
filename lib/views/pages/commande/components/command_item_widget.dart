@@ -62,9 +62,9 @@ class CommandItemWidget extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                       color: Colors.black,
-                      fontSize: 18.sp,
+                      fontSize: 22.sp,
                     ),
                   ),
                 ),
@@ -75,8 +75,8 @@ class CommandItemWidget extends StatelessWidget {
                   },
                   child: SvgPicture.asset(
                     'assets/icons/remove.svg',
-                    height: 18.sp,
-                    width: 18.sp,
+                    height: 25.sp,
+                    width: 25.sp,
                   ),
                 )
               ],
@@ -111,15 +111,15 @@ class CommandItemWidget extends StatelessWidget {
                     'A payer'.tr,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
+                      fontSize: 20.sp,
                     ),
                   ),
                   Text(
                     '$totalPrice ' + 'da'.tr,
                     style: TextStyle(
                       color: AppColors.GREY_TEXT_COLOR,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18.sp,
                     ),
                   )
                 ],
@@ -144,7 +144,7 @@ class CommandItemWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
+                        fontSize: 20.sp,
                       ),
                     ),
                     Text(
@@ -159,7 +159,7 @@ class CommandItemWidget extends StatelessWidget {
                       style: TextStyle(
                         color: const Color.fromRGBO(249, 227, 227, 1),
                         fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
+                        fontSize: 18.sp,
                       ),
                     ),
                   ],
@@ -173,9 +173,9 @@ class CommandItemWidget extends StatelessWidget {
                 Text(
                   'Total : ${totalPrice + cartController.deliveryPrice}',
                   style: TextStyle(
-                    fontSize: 14.sp,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 20.sp,
+                    color: Color.fromARGB(255, 127, 2, 2),
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
               ],

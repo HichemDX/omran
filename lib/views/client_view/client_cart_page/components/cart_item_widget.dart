@@ -31,8 +31,8 @@ class CartItemWidget extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
               color: AppColors.BLUE_COLOR,
-              blurRadius: 1,
-              offset: Offset(0, 10), // Shadow position
+              blurRadius: 8,
+              offset: Offset(0, 5), // Shadow position
             ),
           ],
           color: Colors.white,
@@ -61,7 +61,7 @@ class CartItemWidget extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
-                      fontSize: 18.sp,
+                      fontSize: 25.sp,
                     ),
                   ),
                 ),
@@ -72,13 +72,13 @@ class CartItemWidget extends StatelessWidget {
                   },
                   child: SvgPicture.asset(
                     'assets/icons/remove.svg',
-                    height: 18.sp,
-                    width: 18.sp,
+                    height: 26.sp,
+                    width: 26.sp,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 35.h),
+            SizedBox(height: 15.h),
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -100,19 +100,41 @@ class CartItemWidget extends StatelessWidget {
                 Text(
                   'Total : $totalPrice',
                   style: TextStyle(
-                    fontSize: 14.sp,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 18.sp,
+                    color: Color.fromARGB(255, 192, 20, 20),
+                    fontWeight:
+                        FontWeight.bold, // Ajout du style en gras (bold)
                   ),
+
                 ),
-                ElevatedButton(
+              ElevatedButton(
                   onPressed: totalPrice == 0
                       ? null
                       : () => Get.to(
                             () => ConfirmOrderPage(cartIndex: model.storeId!),
                           ),
-                  child: Text('confirm'.tr),
+                  style: ElevatedButton.styleFrom(
+                    primary: totalPrice == 0
+                        ? Colors.grey
+                        : Color.fromARGB(255, 73, 137, 10), // Couleur du bouton
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(10.0), // Bordure arrondie
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                    child: Text(
+                      'confirm'.tr,
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        color: Colors.white, // Couleur du texte
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
+
               ],
             ),
           ],

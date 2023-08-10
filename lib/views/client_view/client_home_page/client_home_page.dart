@@ -136,8 +136,8 @@ class ClientHomePage extends StatelessWidget {
           }*/
         },
         child: Container(
-          height: 48.sp,
-          width: 48.sp,
+          height: 54.sp,
+          width: 54.sp,
           child: Container(
             padding: EdgeInsets.all(11.sp),
             child: const Icon(Icons.search, color: Colors.white)

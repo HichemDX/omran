@@ -21,10 +21,10 @@ class _ConfirmEmailState extends State<ConfirmEmail> {
   bool isCustomer = true;
   bool spinner = false;
   String code = "";
-  User? userd;
+  CustomUser? userd;
   final formKey = GlobalKey<FormState>();
   final authController = Get.put(AuthProvider());
-
+String verifid = ""; 
   @override
   void initState() {
     super.initState();
@@ -32,13 +32,14 @@ class _ConfirmEmailState extends State<ConfirmEmail> {
 
   sendCode() async {
     Loader.show(context, progressIndicator: LoaderStyleWidget());
-    bool result = await authController.sendCode();
+   verifid = await authController.sendCode(userd!.phone!);
     Loader.hide();
+    
   }
 
   confirmEmail() async {
     Loader.show(context, progressIndicator: LoaderStyleWidget());
-    bool result = await authController.confirmEmail(code);
+    bool result = await authController.confirmEmail(code: code,verifId: verifid);
     Loader.hide();
   }
 
@@ -51,7 +52,7 @@ class _ConfirmEmailState extends State<ConfirmEmail> {
           backgroundColor: AppColors.BACK_COLOR,
           elevation: 0,
           title: Text(
-            'Confirmation Email'.tr,
+            'Confirmation phone'.tr,
             style: TextStyle(
               color: Colors.black,
             ),

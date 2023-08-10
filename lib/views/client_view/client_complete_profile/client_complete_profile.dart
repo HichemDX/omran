@@ -65,11 +65,11 @@ class _ClientCompleteProfileState extends State<ClientCompleteProfile> {
     }
   }
 
-  Future<User> getCurrentClient() async {
+  Future<CustomUser> getCurrentClient() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     Map<String, dynamic> json = jsonDecode(pref.getString('client')!);
     print(json);
-    return User.fromJson(json);
+    return CustomUser.fromJson(json);
   }
 
   _pickImage() async {
@@ -86,7 +86,7 @@ class _ClientCompleteProfileState extends State<ClientCompleteProfile> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.BACK_COLOR,
-        body: FutureBuilder<User>(
+        body: FutureBuilder<CustomUser>(
           future: getCurrentClient(),
           builder: (context, snapShot) {
             if (snapShot.hasData) {

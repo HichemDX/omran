@@ -11,6 +11,7 @@ import 'package:bnaa/models/store.dart';
 import 'package:bnaa/models/user.dart';
 import 'package:bnaa/services/api_http.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../main.dart';
@@ -29,13 +30,13 @@ class AuthProvider extends GetxController {
   static String version = 'api/v1';
   static String host = Network.host;
   late String _token;
-  static User? client;
+  static CustomUser? client;
   static Store? store;
 
   Status _status = Status.Uninitialized;
 
   Status get status => _status;
-
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   AuthProvider() {
     initAuthController();
   }
@@ -44,7 +45,7 @@ class AuthProvider extends GetxController {
     SharedPreferences storage = await SharedPreferences.getInstance();
     Map<String, dynamic> json = jsonDecode(storage.getString('client')!);
     print(json);
-    client = User.fromJson(json);
+    client = CustomUser.fromJson(json);
     return client!.phone != null;
   }
 
@@ -144,7 +145,7 @@ class AuthProvider extends GetxController {
       if (await isClient()) {
         var isProfileCompleted = await isClientProfileCompleted();
         Map<String, dynamic> json = jsonDecode(storage.getString('client')!);
-        User uss = User.fromJson(json);
+        CustomUser uss = CustomUser.fromJson(json);
         if (uss.validated == false) {
           _status = Status.ConfirmEmail;
           update();
@@ -165,7 +166,7 @@ class AuthProvider extends GetxController {
       if (await isStore()) {
         var isProfileCompleted = await isStoreProfileCompleted();
         Map<String, dynamic> json = jsonDecode(storage.getString('store')!);
-        User uss = User.fromJson(json);
+        CustomUser uss = CustomUser.fromJson(json);
         if (uss.validated == false) {
           _status = Status.ConfirmEmail;
           update();
@@ -226,7 +227,7 @@ class AuthProvider extends GetxController {
         await storeUserDataFirstLogin(response.body);
         await initAuthController();
         if (data["data"]["validated"] == false) {
-          await sendCode();
+          await sendCode(phone);
         }
         return true;
       } else {
@@ -241,31 +242,19 @@ class AuthProvider extends GetxController {
     }
   }
 
-  Future<bool> confirmEmail(code) async {
-    var api = Network();
-
-    var data = {"code": code};
-
+  Future<bool> confirmEmail(
+      {required String code, required String verifId}) async {
     try {
-      final response = await api.post('/confirmcode', data);
+      PhoneAuthCredential phoneAuthCredential =
+          PhoneAuthProvider.credential(verificationId: verifId, smsCode: code);
 
-      if (response.statusCode == 200) {
-        var data = json.decode(response.body);
-        await storeUserDataFirstLogin(response.body);
-        await initAuthController();
-        return true;
-      } else {
-        ServerResponse.serverResponseHandler(response: response);
-        return false;
-      }
-    } catch (e, stackTrace) {
+      await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
+      return true;
+    } catch (e) {
       print(e);
-      print(stackTrace);
-      ServerResponse.checkNetworkError();
       return false;
     }
   }
-
   Future<bool> register({
     required String name,
     required String phone,
@@ -300,28 +289,20 @@ class AuthProvider extends GetxController {
     }
   }
 
-  Future<bool> sendCode() async {
-    var api = Network();
-
-    /*SharedPreferences storage = await SharedPreferences.getInstance();
-    final String? fcm = storage.getString('device_id');*/
-
-    try {
-      final response = await api.post('/sendcode', {});
-
-      if (response.statusCode == 200) {
-        return true;
-      } else {
-        ServerResponse.serverResponseHandler(response: response);
-        return false;
+  Future<String> sendCode(String phone) async {
+    String verifId = '';
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '+213 ${phone}',
+      verificationCompleted: (PhoneAuthCredential credential) {},
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) async {
+        verifId = verificationId;
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+    return verifId;
+    
       }
-    } catch (e, stackTrace) {
-      print(e);
-      print(stackTrace);
-      ServerResponse.checkNetworkError();
-      return false;
-    }
-  }
 
   Future<bool> sendCodeForChangePassword(String email) async {
     var api = Network();

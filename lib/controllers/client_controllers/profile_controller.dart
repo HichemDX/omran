@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bnaa/main.dart' as main;
 
 class ProfileController extends GetxController {
-  User? user;
+  CustomUser? user;
 
   Map<String, dynamic> appInfo = {};
 
@@ -18,11 +18,11 @@ class ProfileController extends GetxController {
     if (pref.getString('user') != null) {
       Map<String, dynamic> json = jsonDecode(pref.getString('user')!);
       main.user = jsonDecode(pref.getString('user')!);
-      user = User.fromJson(json);
+      user = CustomUser.fromJson(json);
     }
   }
 
-  Future<User> getUserProfile() async {
+  Future<CustomUser> getUserProfile() async {
     try {
       Network api = Network();
       var response = await api

@@ -23,20 +23,22 @@ class CardCommand extends StatelessWidget {
           ));
         },
         child: Container(
+          height: 140.h,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20.r),
+            
             boxShadow: const [
               BoxShadow(
                 color: AppColors.BLUE_COLOR,
-                blurRadius: 1,
+                blurRadius: 8,
                 offset: Offset(0, 3), // Shadow position
               ),
             ],
           ),
           child: Row(mainAxisSize: MainAxisSize.min, children: [
             Padding(
-              padding: EdgeInsets.all(12.sp),
+              padding: EdgeInsets.all(10.sp),
               child: SizedBox(
                 height: 100.sp,
                 width: 100.sp,
@@ -55,26 +57,29 @@ class CardCommand extends StatelessWidget {
                   children: [
                     Text(model.storeName.toString(),
                         style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.black,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.bold, 
+
+                          color: Color.fromARGB(255, 255, 140, 0),
                         )),
                     SizedBox(height: 10.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                      Text(
                           'order code'.tr,
                           style: TextStyle(
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w400,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight
+                                .bold, // Ajout du style en gras (bold)
                             color: Colors.black,
                           ),
                         ),
+
                         Text(
                           "#" + model.code.toString(),
                           style: TextStyle(
-                            fontSize: 10.sp,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w400,
                             color: Colors.black,
                           ),
@@ -94,15 +99,15 @@ class CardCommand extends StatelessWidget {
                         Text(
                           'order status'.tr,
                           style: TextStyle(
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w400,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.bold, 
                             color: Colors.black,
                           ),
                         ),
                         Text(
                           model.status!.toLowerCase().tr,
                           style: TextStyle(
-                            fontSize: 10.sp,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w400,
                             color: Colors.black,
                           ),
@@ -122,22 +127,22 @@ class CardCommand extends StatelessWidget {
                         Text(
                           'requested on'.tr,
                           style: TextStyle(
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w400,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.bold, 
                             color: Colors.black,
                           ),
                         ),
                         Text(
                           model.createdAt.toString(),
                           style: TextStyle(
-                            fontSize: 10.sp,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w400,
                             color: Colors.black,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 2.h),
+                    SizedBox(height: 5.h),
                     Container(
                       height: 0.5.h,
                       width: double.infinity,

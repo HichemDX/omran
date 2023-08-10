@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   String type = "C";
   String? tradeName;
-  String? email;
+  String? phone;
   String? password;
   String? password2;
   final formKey = GlobalKey<FormState>();
@@ -40,7 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     Loader.show(context, progressIndicator: LoaderStyleWidget());
 
     bool result = await authController.register(
-        name: tradeName!, phone: email!, password: password!, type: type);
+        name: tradeName!, phone: phone!, password: password!, type: type);
     if (result == true) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Compte créé avec succès".tr),
@@ -195,7 +195,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: Text(
-                      'email'.tr,
+                      'phone'.tr,
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w600,
@@ -205,10 +205,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   InputTextField(
                     initValue: "",
-                    hintText: 'Ex : example@gmail.com',
-                    keyboardType: TextInputType.emailAddress,
+                    hintText: 'Ex : 0555555555',
+                    keyboardType: TextInputType.phone,
                     valueStater: (value) {
-                      email = value;
+                      phone = value;
                     },
                   ),
                   SizedBox(height: 30.h),

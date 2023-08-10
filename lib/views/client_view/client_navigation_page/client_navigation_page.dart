@@ -11,7 +11,10 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+
+import '../../../controllers/cart_controller.dart';
 
 class ClientNavigationScreen extends StatefulWidget {
   @override
@@ -42,8 +45,10 @@ class _ClientNavigationScreenState extends State<ClientNavigationScreen> {
     ChariotScreen(),
     ClientStoresPage(),
   ];
+  final CartController cartController = Get.find();
 
   final navigationController = Get.put(ClientNavigationController());
+
   DateTime? lastPressed;
 
   @override
@@ -149,13 +154,83 @@ class _ClientNavigationScreenState extends State<ClientNavigationScreen> {
                   label: '',
                 ),
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/icons/bottom3.svg',
-                    color: AppColors.INACTIVE_GREY_COLOR,
+                  icon: GetBuilder<CartController>(
+                    builder: (context) {
+                      bool isCartNotEmpty = cartController.cartsMap.isNotEmpty;
+                      return Stack(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/bottom3.svg',
+                            color: isCartNotEmpty
+                                ? AppColors.INACTIVE_GREY_COLOR
+                                : AppColors.INACTIVE_GREY_COLOR,
+                          ),
+                          if (isCartNotEmpty)
+                            Positioned(
+                              top: 0,
+                              right: 0,
+                              child: Container(
+                                width: 18,
+                                height: 18,
+                                padding: EdgeInsets.all(2),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.red,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    cartController.cartsMap.length.toString(),
+                                    style: TextStyle(
+                                      fontSize: 9,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      );
+                    },
                   ),
-                  activeIcon: SvgPicture.asset(
-                    'assets/icons/bottom3.svg',
-                    color: AppColors.ORANGE_COLOR,
+                  activeIcon: GetBuilder<CartController>(
+                    builder: (context) {
+                      bool isCartNotEmpty = cartController.cartsMap.isNotEmpty;
+                       return Stack(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/bottom3.svg',
+                            color: isCartNotEmpty
+                                ? AppColors.ORANGE_COLOR
+                                : AppColors.ORANGE_COLOR,
+                          ),
+                          if (isCartNotEmpty)
+                            Positioned(
+                              top: 0,
+                              right: 0,
+                              child: Container(
+                                width: 18,
+                                height: 18,
+                                padding: EdgeInsets.all(2),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.red,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    cartController.cartsMap.length.toString(),
+                                    style: TextStyle(
+                                      fontSize: 9,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      );
+                    },
                   ),
                   label: '',
                 ),

@@ -33,12 +33,12 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 70,
       margin: const EdgeInsets.symmetric(vertical: 4),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: AppColors.BLUE_LABEL_COLOR,
-          borderRadius: BorderRadius.circular(5.r)),
+          borderRadius: BorderRadius.circular(10.r)),
       child: Row(children: [
         InkWell(
           onTap: () {
@@ -49,8 +49,8 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
           },
           child: SvgPicture.asset(
             'assets/icons/remove.svg',
-            height: 17.sp,
-            width: 17.sp,
+            height: 20.sp,
+            width: 20.sp,
           ),
         ),
         SizedBox(width: 10.w),
@@ -64,7 +64,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 14.sp,
+                  fontSize: 17.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
                 ),
@@ -82,7 +82,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 10.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w300,
                   color: AppColors.GREY_TEXT_COLOR,
                 ),

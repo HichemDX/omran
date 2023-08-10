@@ -154,7 +154,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         child: contentValue(
                           key: 'unit price'.tr,
                           value: getQty(qty: "${widget.product.price}"),
-                          asset: 'assets/icons/moneyIcon.svg',
+                          
                         ),
                       ),
                       const SizedBox(width: 5),
@@ -405,7 +405,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           style: TextStyle(
             color: AppColors.BLUE_COLOR,
             fontWeight: FontWeight.bold,
-            fontSize: 12.sp,
+            fontSize: 18.sp,
           ),
         ),
         const SizedBox(

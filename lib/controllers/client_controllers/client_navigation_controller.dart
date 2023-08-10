@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class ClientNavigationController extends GetxController {
 
-
+final RxBool isCartNotEmpty = false.obs;
 
   int selectedIndex = 0;
 
@@ -10,5 +10,6 @@ class ClientNavigationController extends GetxController {
       selectedIndex = pageIndex;
       update();
   }
+  
 
 }

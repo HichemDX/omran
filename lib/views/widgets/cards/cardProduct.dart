@@ -258,7 +258,8 @@ import '../image_holder.dart';
 
 class CardProduct extends StatefulWidget {
    Product product;
-  CardProduct({required this.product});
+   final bool favorite;
+  CardProduct({required this.product, this.favorite  = false});
 
   @override
   State<CardProduct> createState() => _CardProductState();
@@ -341,7 +342,7 @@ class _CardProductState extends State<CardProduct> {
               Container(
                 padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
                 decoration: BoxDecoration(
-                    color: Color(0xff346780),
+                    color: widget.favorite? Color.fromARGB(255, 228, 117, 20) :Color(0xff346780) ,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(14.r),
                       topRight: Radius.circular(14.r),
@@ -356,8 +357,24 @@ class _CardProductState extends State<CardProduct> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5.r),
                               color: Colors.white),
-                          child: CachedNetworkImage(
+                          child: 
+                            widget.product.storeImage! ==
+                                  'https://omran-dz.com/icons/store.png'
+                              ? Image.asset(
+                                  'assets/icons/profilestore3.png',
+                                  fit: BoxFit.cover,
+                                  height: 24.sp,
+                                  width: 24.sp,
+                                  
+                                )
+                          
+                          
+                          
+                        :  CachedNetworkImage(
                             errorWidget: (ctx, _, __) => imageHolder,
+
+
+                            
                             imageUrl: widget.product.storeImage.toString(),
                             fit: BoxFit.fill,
                             height: 24.sp,

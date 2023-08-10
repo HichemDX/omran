@@ -23,7 +23,7 @@ class Line extends StatelessWidget {
             style: TextStyle(
               fontSize: 20.sp,
               color: AppColors.BLUE_COLOR,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold, 
             ),
           ),
         ),

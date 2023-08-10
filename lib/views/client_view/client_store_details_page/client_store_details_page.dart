@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../../constants/app_colors.dart';
 import '../../widgets/appBar/appBar.dart';
 import '../../widgets/image_holder.dart';
@@ -23,7 +23,7 @@ class ClientStoreDetailsPage extends StatefulWidget {
 
 class _ClientStoreDetailsPageState extends State<ClientStoreDetailsPage> {
   final storeDetailsController = Get.put(StoreController());
-
+  Map<String, dynamic> rating = {};
   @override
   void initState() {
     super.initState();
@@ -48,22 +48,19 @@ class _ClientStoreDetailsPageState extends State<ClientStoreDetailsPage> {
                       SizedBox(
                         height: 100.sp,
                         width: 100.sp,
-                        child: 
-                          widget.store.image! ==
-                                  'https://omran-dz.com/icons/store.png'
-                              ? Image.asset(
-                                  'assets/icons/profilestore3.png',
-                                  fit: BoxFit.cover,
-                                  height: 100.sp,
-                                  width: 100.sp,
-                                )
-                        
-                        
-                      :  CachedNetworkImage(
-                          errorWidget: (ctx, _, __) => imageHolder,
-                          imageUrl: widget.store.image!,
-                          fit: BoxFit.cover,
-                        ),
+                        child: widget.store.image! ==
+                                'https://omran-dz.com/icons/store.png'
+                            ? Image.asset(
+                                'assets/icons/profilestore3.png',
+                                fit: BoxFit.cover,
+                                height: 100.sp,
+                                width: 100.sp,
+                              )
+                            : CachedNetworkImage(
+                                errorWidget: (ctx, _, __) => imageHolder,
+                                imageUrl: widget.store.image!,
+                                fit: BoxFit.cover,
+                              ),
                       ),
                       SizedBox(width: 28.w),
                       Expanded(
@@ -125,18 +122,47 @@ class _ClientStoreDetailsPageState extends State<ClientStoreDetailsPage> {
                                 )
                               ],
                             ),
+                            SizedBox(height: 10.h),
+                            RatingBar.builder(
+                              initialRating: 3,
+                              minRating: 1,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemSize: 25.0,
+                              itemPadding:
+                                  EdgeInsets.symmetric(horizontal: 4.0),
+                              itemBuilder: (context, _) => Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating) {
+                                print(rating);
+                              },
+                            )
                           ],
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(ReportStor(store: widget.store));
-                        },
-                        child: Icon(
-                          Icons.report,
-                          size: 35,
-                          color: Colors.orange,
-                        ),
+                      Column(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                            size:
+                                40, // Adjust the size according to your preference.
+                          ),
+                          SizedBox(height: 10.h),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(ReportStor(store: widget.store));
+                            },
+                            child: Icon(
+                              Icons.report,
+                              size: 35,
+                              color: Colors.orange,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

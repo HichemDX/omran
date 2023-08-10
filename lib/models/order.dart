@@ -34,7 +34,7 @@ class Order {
   String? grandTotal;
   String? status;
   String? createdAt;
-  User? customer;
+  CustomUser? customer;
   ShippingInfo? shippingInfo;
   List<Product>? listProducts;
 
@@ -50,7 +50,7 @@ class Order {
       grandTotal: json["grand_total"],
       status: json["status"],
       createdAt: DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(json["created_at"])),
-      customer: User.fromJson(json["customer"]?? {}),
+      customer: CustomUser.fromJson(json["customer"]?? {}),
       shippingInfo: ShippingInfo.fromJson(json["shipping_info"]),
       listProducts: List<Product>.from(
           json["list_products"].map((x) => Product.fromJson(x))),

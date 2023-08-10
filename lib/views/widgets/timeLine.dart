@@ -69,7 +69,7 @@ class _Timeline1 extends StatelessWidget {
             color: Color(0xffd3d3d3),
           ),
           indicatorTheme: const IndicatorThemeData(
-            size: 15.0,
+            size: 18.0,
           ),
         ),
         padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -81,7 +81,7 @@ class _Timeline1 extends StatelessWidget {
                 child: Text(
                   canceledStatus.entries.elementAt(index).value.tr,
                   style: GoogleFonts.montserrat(
-                      fontSize: 12.sp, fontWeight: FontWeight.w700),
+                      fontSize: 16.sp, fontWeight: FontWeight.w700),
                 ),
               );
             } else if (status == index) {
@@ -91,7 +91,7 @@ class _Timeline1 extends StatelessWidget {
                   canceledStatus.entries.elementAt(index).value.tr,
                   style: GoogleFonts.montserrat(
                       color: Colors.red,
-                      fontSize: 12.sp,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w700),
                 ),
               );
@@ -102,7 +102,7 @@ class _Timeline1 extends StatelessWidget {
                   canceledStatus.entries.elementAt(index).value.tr,
                   style: GoogleFonts.montserrat(
                       color: const Color.fromRGBO(217, 217, 217, 1),
-                      fontSize: 12.sp,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w700),
                 ),
               );
@@ -152,7 +152,7 @@ class _Timeline1 extends StatelessWidget {
           color: Color(0xffd3d3d3),
         ),
         indicatorTheme: const IndicatorThemeData(
-          size: 15.0,
+          size: 18.0,
         ),
       ),
       padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -164,7 +164,7 @@ class _Timeline1 extends StatelessWidget {
               child: Text(
                 etats.entries.elementAt(index).value.tr,
                 style: GoogleFonts.montserrat(
-                    fontSize: 12.sp, fontWeight: FontWeight.w700),
+                    fontSize: 16.sp, fontWeight: FontWeight.w700),
               ),
             );
           } else if (status == index) {
@@ -175,7 +175,7 @@ class _Timeline1 extends StatelessWidget {
                   etats.entries.elementAt(index).value.tr,
                   style: GoogleFonts.montserrat(
                       color: const Color.fromRGBO(40, 167, 69, 1),
-                      fontSize: 12.sp,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w700),
                 ),
               );
@@ -186,7 +186,7 @@ class _Timeline1 extends StatelessWidget {
                 etats.entries.elementAt(index).value.tr,
                 style: GoogleFonts.montserrat(
                     color: const Color.fromRGBO(255, 215, 71, 1),
-                    fontSize: 12.sp,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w700),
               ),
             );
@@ -197,7 +197,7 @@ class _Timeline1 extends StatelessWidget {
                 etats.entries.elementAt(index).value.tr,
                 style: GoogleFonts.montserrat(
                     color: const Color.fromRGBO(217, 217, 217, 1),
-                    fontSize: 12.sp,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w700),
               ),
             );

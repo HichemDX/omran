@@ -8,6 +8,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
@@ -109,7 +110,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                           controller.selectedCommand!.code
                                               .toString(),
                                           style: TextStyle(
-                                            fontSize: 14.sp,
+                                            fontSize: 18.sp,
                                             fontWeight: FontWeight.w800,
                                             color: Colors.black,
                                           )),
@@ -120,14 +121,21 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                            controller
-                                                .selectedCommand!.storeName
-                                                .toString(),
-                                            style: TextStyle(
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w800,
-                                              color: Colors.black,
-                                            ))
+                                          controller.selectedCommand!.storeName
+                                              .toString()
+                                              .split(
+                                                  ' ') // Divise la chaîne en mots
+                                              .take(
+                                                  2) // Prend les deux premiers mots
+                                              .join(
+                                                  ' '), // Joins les deux mots avec un espace entre eux
+                                          style: TextStyle(
+                                            fontSize: 18.sp,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        )
+
                                       ],
                                     ),
                                     SizedBox(height: 2.h),
@@ -144,7 +152,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                         Text(
                                           'amount'.tr,
                                           style: TextStyle(
-                                            fontSize: 10.sp,
+                                            fontSize: 14.sp,
                                             fontWeight: FontWeight.w400,
                                             color: Colors.black,
                                           ),
@@ -154,7 +162,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                                   .toString() +
                                               'da'.tr,
                                           style: TextStyle(
-                                            fontSize: 10.sp,
+                                            fontSize: 14.sp,
                                             fontWeight: FontWeight.w400,
                                             color: Colors.black,
                                           ),
@@ -173,7 +181,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                       children: [
                                         Text('requested on'.tr,
                                             style: TextStyle(
-                                              fontSize: 10.sp,
+                                              fontSize: 14.sp,
                                               fontWeight: FontWeight.w400,
                                               color: Colors.black,
                                             )),
@@ -182,7 +190,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                                 .selectedCommand!.createdAt
                                                 .toString(),
                                             style: TextStyle(
-                                              fontSize: 10.sp,
+                                              fontSize: 14.sp,
                                               fontWeight: FontWeight.w400,
                                               color: Colors.black,
                                             ))
@@ -210,7 +218,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                   alignment: Alignment.topLeft,
                                   child: NormalButtonWithBorder(
                                     model: NormalButtonWithBorderModel(
-                                      textFontSize: 16.sp,
+                                      textFontSize: 18.sp,
                                       colorText:
                                           const Color.fromRGBO(181, 0, 0, 1),
                                       bColor:
@@ -289,9 +297,9 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                               ),
                               context);
                         },
-                        child: Icon(
-                          Icons.print,
-                          size: 30,
+                        child:   SvgPicture.asset(
+                          'assets/icons/gui_print_icon_157059.svg',
+                          width: 50.sp,
                         ),
                       ),
                     ],
@@ -305,15 +313,15 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                           Text(
                             'order code'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
                           Text(
                             controller.selectedCommand!.code.toString(),
                             style: TextStyle(
-                              fontSize: 15.sp,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.black,
                             ),
@@ -337,8 +345,8 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                           Text(
                             'order status'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
@@ -347,7 +355,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                     .toString()]!
                                 .tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.black,
                             ),
@@ -371,15 +379,15 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                           Text(
                             'requested on'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
                           Text(
                             controller.selectedCommand!.createdAt.toString(),
                             style: TextStyle(
-                              fontSize: 15.sp,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.black,
                             ),
@@ -402,14 +410,14 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                           Text(
                             'invoice for'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
                           Text("${controller.selectedCommand!.customer!.name}",
                               style: TextStyle(
-                                fontSize: 15.sp,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black,
                               ))
@@ -432,8 +440,8 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                           Text(
                             'phone'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
@@ -441,7 +449,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                             controller.selectedCommand!.customer!.phone
                                 .toString(),
                             style: TextStyle(
-                              fontSize: 15.sp,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.black,
                             ),
@@ -464,8 +472,8 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                           Text(
                             'client address'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
@@ -473,7 +481,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                             controller.selectedCommand!.shippingInfo!.address
                                 .toString(),
                             style: TextStyle(
-                              fontSize: 15.sp,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.black,
                             ),
@@ -526,8 +534,8 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                           Text(
                             'amount to pay'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
@@ -536,9 +544,9 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                 ' ' +
                                 'da'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 190, 29, 29),
                             ),
                           )
                         ],
@@ -577,7 +585,8 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
-                                          fontSize: 15.sp,
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.bold,
                                         )),
                                     Text(
                                       /*controller.selectedCommand!
@@ -607,7 +616,11 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                   child: Text(
                                     '${double.parse(controller.selectedCommand!.listProducts![index].price.toString()) * double.parse(controller.selectedCommand!.listProducts![index].quantity.toString())} ' +
                                         'da'.tr,
-                                    style: TextStyle(fontSize: 15.sp),
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                      color: Color.fromARGB(255, 190, 17, 17),
+                                      fontWeight: FontWeight.w800,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -632,8 +645,8 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                           Text(
                             'delivery'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w800,
                               color: Colors.black,
                             ),
                           ),
@@ -643,7 +656,7 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                                 ' ' +
                                 'da'.tr,
                             style: TextStyle(
-                              fontSize: 15.sp,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.black,
                             ),
@@ -665,8 +678,9 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                       Text(
                         'total'.tr,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w800,
                           color: AppColors.BLUE_COLOR,
+                          fontSize: 20,
                         ),
                       ),
                       SizedBox(width: 30.w),
@@ -675,8 +689,9 @@ class _ClientOrderDetailsPageState extends State<ClientOrderDetailsPage> {
                             " " +
                             'da'.tr,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.BLUE_COLOR,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 168, 21, 21),
+                          fontSize: 18,
                         ),
                       )
                     ],

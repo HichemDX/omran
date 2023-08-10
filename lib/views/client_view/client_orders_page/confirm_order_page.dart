@@ -126,13 +126,14 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
                           Text(
                             'informations'.tr,
                             style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 20.sp),
+                                fontWeight: FontWeight.w800, fontSize: 25.sp),
                           ),
                           SizedBox(height: 9.h),
                           Text(
                             'Ajouter vos informations pour vous contacter'.tr,
                             style: TextStyle(
-                                fontWeight: FontWeight.w300, fontSize: 14.sp),
+                              
+                                fontWeight: FontWeight.w600, fontSize: 17.sp),
                           ),
                           SizedBox(height: 22.h),
                           Align(
@@ -141,7 +142,7 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
                               'full name'.tr,
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                fontSize: 12.sp,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.BLUE_COLOR,
                               ),
@@ -161,7 +162,7 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
                               'phone'.tr,
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                fontSize: 12.sp,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.BLUE_COLOR,
                               ),
@@ -182,7 +183,7 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
                               'address'.tr,
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                fontSize: 12.sp,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.BLUE_COLOR,
                               ),
@@ -396,6 +397,7 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
               Container(),
               GetBuilder<AuthProvider>(builder: (authController) {
                 return ElevatedButton(
+                
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       print('validate form');

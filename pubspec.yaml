@@ -81,6 +81,7 @@ dependencies:
   permission_handler: ^10.2.0
   external_path: ^1.0.3
   open_file_safe: ^3.2.3
+  flutter_rating_bar: ^4.0.1
 
 
 dev_dependencies:

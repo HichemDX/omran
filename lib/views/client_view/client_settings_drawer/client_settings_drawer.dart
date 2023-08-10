@@ -26,9 +26,9 @@ class ClientSettingsDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<User>(
+      body: FutureBuilder<CustomUser>(
         future: profileController.getUserProfile(),
-        builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<CustomUser> snapshot) {
           return GetBuilder<ProfileController>(
             builder: (_) {
               return Padding(
@@ -94,25 +94,25 @@ class ClientSettingsDrawer extends StatelessWidget {
                                 ],
                               ),
                               SizedBox(height: 10.h),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(
-                                    'assets/icons/locationIcon.svg',
-                                    height: 12.sp,
-                                    width: 12.sp,
-                                  ),
-                                  SizedBox(width: 10.w),
-                                  Expanded(
-                                    child: Text(
-                                      Get.locale!.languageCode != "fr"
-                                          ? '${profileController.user!.wilaya!.nameAr ?? ""}, ${profileController.user!.commune?.nameAr ?? ""}'
-                                          : '${profileController.user!.wilaya!.nameFr ?? ""}, ${profileController.user!.commune?.nameFr ?? ""}',
-                                      style: TextStyle(fontSize: 14.sp),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              // Row(
+                              //   crossAxisAlignment: CrossAxisAlignment.center,
+                              //   children: [
+                              //     SvgPicture.asset(
+                              //       'assets/icons/locationIcon.svg',
+                              //       height: 12.sp,
+                              //       width: 12.sp,
+                              //     ),
+                              //     SizedBox(width: 10.w),
+                              //     Expanded(
+                              //       child: Text(
+                              //         Get.locale!.languageCode != "fr"
+                              //             ? '${profileController.user!.wilaya!.nameAr ?? ""}, ${profileController.user!.commune?.nameAr ?? ""}'
+                              //             : '${profileController.user!.wilaya!.nameFr ?? ""}, ${profileController.user!.commune?.nameFr ?? ""}',
+                              //         style: TextStyle(fontSize: 14.sp),
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
                             ],
                           ),
                         ),
@@ -455,8 +455,7 @@ class ClientSettingsDrawer extends StatelessWidget {
                                   InkWell(
                                     onTap: () {
                                       launchUrl(
-                                        Uri.parse(profileController
-                                            .appInfo['facebook']),
+                                        Uri.parse('https://facebook.com/people/OMRAN/100093063001848/'),
                                       );
                                     },
                                     child: Image.asset(

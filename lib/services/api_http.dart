@@ -14,8 +14,8 @@ class Network {
 
   static String version = 'api';
 
-  static String host = 'http://127.0.0.1:8000/';
-  // static String host = 'https://omran-dz.com/';
+  // static String host = 'http://127.0.0.1:8000/';
+  static String host = 'https://omran-dz.com/';
 
   _setHeadersWithToken() async {
     SharedPreferences storage = await SharedPreferences.getInstance();

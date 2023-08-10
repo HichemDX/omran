@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:bnaa/models/commune.dart';
 import 'package:bnaa/models/wilaya.dart';
 
-class User {
+class CustomUser {
   String? name;
   String? email;
   String? pictureLink;
@@ -14,7 +14,7 @@ class User {
   bool? isClient;
   bool? validated;
 
-  User({
+  CustomUser({
     this.name,
     this.email,
     this.pictureLink,
@@ -37,9 +37,9 @@ class User {
     };
   }
 
-  factory User.fromJson(Map<String, dynamic> map) {
+  factory CustomUser.fromJson(Map<String, dynamic> map) {
     print('user convert');
-    return User(
+    return CustomUser(
       name: map['name'],
       email: map['email'],
       pictureLink: map['image'],
